@@ -102,13 +102,12 @@ var SantaGame = {
 
 				this.platforms = this.game.add.group();
 				this.platforms.enableBody = true;
-				this.platforms.createMultiple(5, 'platform', 0, false);
+				this.platforms.createMultiple(10, 'platform', 0, false);
 				this.platforms.setAll('anchor.x', 0.5);
 				this.platforms.setAll('anchor.y', 0.5);
 
 				var plat;
-
-				for(var i=0; i<5; i++){
+				for(var i=0; i<10; i++){
 					plat = this.platforms.getFirstExists(false);
 					plat.reset(i * 192, this.game.world.height - 24);
 					plat.width = 192;
@@ -118,6 +117,7 @@ var SantaGame = {
 					plat.body.bounce.set(0);
 				}
 
+				
 				this.lastPlatform = plat;
 
 				this.santa = this.game.add.sprite(100, this.game.world.height - 200, 'santa-running');
@@ -150,7 +150,7 @@ var SantaGame = {
           }
 					
 			},
-
+			
 			update: function(){
 				var that = this;
 				if(!this.isGameOver){
@@ -179,19 +179,25 @@ var SantaGame = {
 						this.emitter.makeParticles('snowflake');
 						this.currentFrame = 0;
 					}
-
+						
 					this.platforms.children.forEach(function(platform) {
 					  platform.body.position.x -= moveAmount;
 					  if(platform.body.right <= 0){
 					  	platform.kill();
 					  	var plat = that.platforms.getFirstExists(false);
-					  	//plat.reset(that.lastPlatform.body.right + 192, that.game.world.height - (Math.floor(Math.random() * 50)) - 24);
+					  	plat.reset(that.lastPlatform.body.right, that.game.world.height - 24);
+					  	
+					  	that.lastPlatform = plat;
+					  	
+					  	//plat = that.platforms.getFirstExists(false);
+					  	plat.reset(that.lastPlatform.body.right, that.game.world.height - 24);
 					  	plat.body.immovable = true;
 					  	that.lastPlatform = plat;
 					  }
 					});
 
 				}
+				
 				
 			},
 
