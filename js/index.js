@@ -23,7 +23,7 @@ var SantaGame = {
 			this.game.load.audio('drivin-home', 'js/Music/tokyoghoul.mp3');
 			this.game.load.audio('ho-ho-ho', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/ho-ho-ho.mp3');
 			this.game.load.audio('hop', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/jump-sound.mp3');
-			this.game.load.image('platform', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/ground.png');
+			this.game.load.image('platform', 'img/platform.png');
 			this.game.load.spritesheet('santa-running', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/santa-running.png', 37, 52);
 			this.game.load.image('snow-bg', 'img/background.jpg');
 			this.game.load.image('snowflake', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/snowflake.png');
@@ -117,6 +117,7 @@ var SantaGame = {
 					plat.body.bounce.set(0);
 				}
 
+
 				
 				this.lastPlatform = plat;
 
@@ -178,7 +179,7 @@ var SantaGame = {
 					if(this.particleInterval === this.currentFrame){
 						this.emitter.makeParticles('snowflake');
 						this.currentFrame = 0;
-					}
+					} 
 						
 					this.platforms.children.forEach(function(platform) {
 					  platform.body.position.x -= moveAmount;
@@ -195,7 +196,6 @@ var SantaGame = {
 					  	that.lastPlatform = plat;
 					  }
 					});
-
 				}
 				
 				

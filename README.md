@@ -7,3 +7,7 @@ New animations(A+)
 collision(F,and A+)
 Infinite platform.
 Redo title screen.
+
+
+refer to:
+http://codepen.io/natewiley/pen/gbwWMX
